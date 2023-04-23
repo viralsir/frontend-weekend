@@ -1,0 +1,29 @@
+<h2>course Entry Form</h2>
+<form [formGroup]="courseInfo" (ngSubmit)="save()">
+    <table>
+      <tr>
+        <th> Name :</th>
+        <td><input type="text" formControlName="name" size="20"></td>
+      </tr>
+      <tr>
+        <th>Description :</th>
+        <td><textarea name="" id="" cols="30" rows="10" formControlName="description"></textarea></td>
+      </tr>
+      <tr>
+        <th>Fees :</th>
+        <td><input type="number" formControlName="fees"></td>
+      </tr>
+      <tr>
+        <th>Discount :</th>
+        <td><input type="number" formControlName="discount" value="0"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="Add">
+          <input type="reset" value="clear">
+        </td>
+      </tr>
+    </table>
+
+</form>
+<h3>{{msg}}</h3>
