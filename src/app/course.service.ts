@@ -13,4 +13,10 @@ export class CourseService {
     return this.http.post("http://localhost:9090/course",course,{responseType:'text'})
   }
 
+
+  viewcourse():Observable<any>{
+      return this.http.get<any>("http://localhost:9090/course")
+  }
+
+
 }

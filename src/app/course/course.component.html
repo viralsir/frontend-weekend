@@ -1,6 +1,15 @@
+<input type="button" (click)="view()" value="view"> <br/>
 <h2>course Entry Form</h2>
 <form [formGroup]="courseInfo" (ngSubmit)="save()">
     <table>
+      <tr>
+        <th>
+           ID:
+        </th>
+        <td>
+          <input type="number" formControlName="id" >
+        </td>
+      </tr>
       <tr>
         <th> Name :</th>
         <td><input type="text" formControlName="name" size="20"></td>
@@ -27,3 +36,22 @@
 
 </form>
 <h3>{{msg}}</h3>
+
+<table border="2">
+   <tr>
+     <th>ID</th>
+     <th>Name</th>
+     <th>Description</th>
+     <th>Fees</th>
+     <th>Discount</th>
+     <th>Action</th>
+   </tr>
+   <tr *ngFor="let course of coursedata">
+      <td>{{course.id}}</td>
+      <td>{{ course.name}}</td>
+     <td>{{course.description}}</td>
+     <td>{{course.fees}}</td>
+     <td>{{course.discount}}</td>
+     <td><input type="button" value="edit" ></td>
+   </tr>
+</table>
