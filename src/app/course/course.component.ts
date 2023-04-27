@@ -10,6 +10,10 @@ import {CourseService} from "../course.service";
 export class CourseComponent {
    msg:string=""
    coursedata:any[]=[];
+
+   isNew:boolean=true;
+
+
   courseInfo=new FormGroup({
        id:new FormControl(),
        name:new FormControl(),
@@ -25,12 +29,25 @@ export class CourseComponent {
   save()
   {
      console.log(this.courseInfo.value);
-     this.courseservice.newcourse(this.courseInfo.value).subscribe(result=>{
-       this.msg=result;
-     })
-    this.courseInfo.reset()
-     this.view();
+     if(this.isNew==true)
+     {
+         this.courseservice.newcourse(this.courseInfo.value).subscribe(result=>{
+           this.msg=result;
+           this.view();
+         })
 
+     }
+     else {
+         this.courseservice.updatecourse(this.courseInfo.value).subscribe(result=>{
+         this.msg=result;
+           this.view();
+       })
+
+     }
+
+     this.courseInfo.reset()
+
+     this.isNew=true
   }
 
   view()
@@ -40,5 +57,23 @@ export class CourseComponent {
         this.coursedata=result;
      })
   }
+
+  edit(course:any)
+  {
+      this.courseInfo.setValue({"id":course.id,"name":course.name,"fees":course.fees,
+                                     "description":course.description,"discount":course.discount});
+
+      this.isNew=false;
+  }
+
+  delete(course:any)
+  {
+    console.log(course);
+      this.courseservice.deletecourse(course).subscribe(result=>{
+      this.msg=result;
+      this.view();
+    })
+  }
+
 
 }

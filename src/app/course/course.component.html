@@ -28,7 +28,7 @@
       </tr>
       <tr>
         <td colspan="2" align="center">
-          <input type="submit" value="Add">
+          <input type="submit" value="save">
           <input type="reset" value="clear">
         </td>
       </tr>
@@ -52,6 +52,9 @@
      <td>{{course.description}}</td>
      <td>{{course.fees}}</td>
      <td>{{course.discount}}</td>
-     <td><input type="button" value="edit" ></td>
+     <td>
+       <input type="button"  value="edit"  (click)="edit(course)" >
+       <input type="button"  value="delete"  (click)="delete(course)" >
+     </td>
    </tr>
 </table>
