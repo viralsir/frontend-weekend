@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { CourseViewComponent } from './course-view/course-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseComponent
+    CourseComponent,
+    CourseViewComponent
   ],
     imports: [
         BrowserModule,
