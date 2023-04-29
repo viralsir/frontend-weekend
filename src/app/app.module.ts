@@ -7,6 +7,8 @@ import { CourseComponent } from './course/course.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { CourseViewComponent } from './course-view/course-view.component';
+import {ButtonModule} from "primeng/button";
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { CourseViewComponent } from './course-view/course-view.component';
     CourseComponent,
     CourseViewComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ButtonModule,
+    TableModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,22 +1,29 @@
-<table border="2">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Fees</th>
-    <th>Discount</th>
-    <th>Action</th>
-  </tr>
-  <tr *ngFor="let course of coursedata">
-    <td>{{course.id}}</td>
-    <td>{{course.name}}</td>
-    <td>{{course.description}}</td>
-    <td>{{course.fees}}</td>
-    <td>{{course.discount}}</td>
-    <td>
-      <input type="button"  value="edit"  (click)="edit(course)" >
-      <input type="button"  value="delete"  (click)="delete(course)" >
-    </td>
-  </tr>
-</table>
+<div class="card">
+  <p-table [value]="coursedata" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="width:20%">Id <p-sortIcon field="id"></p-sortIcon></th>
+        <th pSortableColumn="name" style="width:20%">Name <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="description" style="width:20%">Description <p-sortIcon field="description"></p-sortIcon></th>
+        <th pSortableColumn="fees" style="width:20%">Fees <p-sortIcon field="fees"></p-sortIcon></th>
+        <th pSortableColumn="discount" style="width:20%">discount <p-sortIcon field="discount"></p-sortIcon></th>
+        <th> Action </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-course>
+      <tr>
+        <td>{{course.id}}</td>
+        <td>{{course.name}}</td>
+        <td>{{course.description}}</td>
+        <td>{{course.fees | currency: 'INR'}}</td>
+        <td>{{course.discount | currency: 'INR'}}</td>
+        <td>
+          <i class="pi pi-check"></i>
+          <p-button label="edit" styleClass="p-button-rounded p-button-warning" (click)="edit(course)"></p-button>
+          <p-button label="delete" styleClass="p-button-rounded p-button-danger" (click)="delete(course)" ></p-button>
 
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
