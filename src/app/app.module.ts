@@ -9,12 +9,19 @@ import {HttpClientModule} from "@angular/common/http";
 import { CourseViewComponent } from './course-view/course-view.component';
 import {ButtonModule} from "primeng/button";
 import {TableModule} from "primeng/table";
+import {MenubarComponent} from "./menubar/menubar.component";
+import {MenubarModule} from "primeng/menubar";
+import {InputNumberModule} from "primeng/inputnumber";
+import {InputTextModule} from "primeng/inputtext";
+import {ToastModule} from "primeng/toast";
+import {MessageModule} from "primeng/message";
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseComponent,
-    CourseViewComponent
+    CourseViewComponent,
+    MenubarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +29,12 @@ import {TableModule} from "primeng/table";
     ReactiveFormsModule,
     HttpClientModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    MenubarModule,
+    InputNumberModule,
+    InputTextModule,
+    ToastModule,
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

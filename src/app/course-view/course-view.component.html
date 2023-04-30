@@ -1,4 +1,7 @@
+
 <div class="card">
+  <p-toast></p-toast>
+  <p-message></p-message>
   <p-table [value]="coursedata" [tableStyle]="{'min-width': '60rem'}">
     <ng-template pTemplate="header">
       <tr>
@@ -21,6 +24,20 @@
           <i class="pi pi-check"></i>
           <p-button label="edit" styleClass="p-button-rounded p-button-warning" (click)="edit(course)"></p-button>
           <p-button label="delete" styleClass="p-button-rounded p-button-danger" (click)="delete(course)" ></p-button>
+
+
+
+
+
+
+
+
+
+            <button type="button" pButton pRipple (click)="showError()" label="Error" class="p-button-danger"></button>
+
+
+
+
 
         </td>
       </tr>
