@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CourseService} from "../course.service";
 
@@ -7,14 +7,12 @@ import {CourseService} from "../course.service";
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.css']
 })
-export class CourseComponent {
+export class CourseComponent  implements OnInit{
    msg:string=""
    coursedata:any[]=[];
 
-   isNew:boolean=true;
 
-
-  courseInfo=new FormGroup({
+  public courseInfo=new FormGroup({
        id:new FormControl(),
        name:new FormControl(),
        description:new FormControl(),
@@ -24,12 +22,25 @@ export class CourseComponent {
   })
 
   constructor(public courseservice:CourseService) {
+    //      this.courseservice.course_form=this.courseInfo;
+  }
+  ngOnInit()
+  {
+    if(!this.courseservice.isNew) {
+      this.courseInfo.setValue({
+        "id": this.courseservice.course.id,
+        "name": this.courseservice.course.name,
+        "fees": this.courseservice.course.fees,
+        "description": this.courseservice.course.description,
+        "discount": this.courseservice.course.discount
+      });
+    }
   }
 
   save()
   {
      console.log(this.courseInfo.value);
-     if(this.isNew==true)
+     if(this.courseservice.isNew==true)
      {
          this.courseservice.newcourse(this.courseInfo.value).subscribe(result=>{
            this.msg=result;
@@ -47,7 +58,7 @@ export class CourseComponent {
 
      this.courseInfo.reset()
 
-     this.isNew=true
+     this.courseservice.isNew=true
   }
 
   view()
@@ -58,12 +69,10 @@ export class CourseComponent {
      })
   }
 
-  edit(course:any)
+  edit()
   {
-      this.courseInfo.setValue({"id":course.id,"name":course.name,"fees":course.fees,
-                                     "description":course.description,"discount":course.discount});
 
-      this.isNew=false;
+      this.courseservice.isNew=false;
   }
 
   delete(course:any)

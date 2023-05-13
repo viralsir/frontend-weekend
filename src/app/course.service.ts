@@ -7,6 +7,10 @@ import {Observable} from "rxjs";
 })
 export class CourseService {
 
+  course:any;
+
+  isNew:boolean=true;
+
   constructor(public http:HttpClient) { }
 
 
